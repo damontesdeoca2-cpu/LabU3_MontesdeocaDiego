@@ -151,18 +151,16 @@ function actualizarTotal() {
   const totalEl = document.getElementById("totalEstudiantes");
   const valorActual = parseInt(totalEl.textContent) || 0;
   const valorFinal = estudiantesRegistrados.length;
+  const counter = { val: valorActual };
 
-  animate(
-    { val: valorActual },
-    {
-      val: valorFinal,
-      duration: 500,
-      ease: "outExpo",
-      onUpdate: function (el) {
-        totalEl.textContent = Math.round(el.val);
-      },
-    }
-  );
+  animate(counter, {
+    val: valorFinal,
+    duration: 500,
+    ease: "outExpo",
+    onUpdate: function () {
+      totalEl.textContent = Math.round(counter.val);
+    },
+  });
 }
 
 function limpiarFormulario() {
